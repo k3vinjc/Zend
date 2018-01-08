@@ -20,7 +20,7 @@ class Greeter implements EventManagerAwareInterface {
    } 
 
    public function asdf($message){
-   		printf("ASDF -> \"%s\" from class\n", $message); 
+   		var_dump(__FUNCTION__);
    }
 
    public function greet($message) { 
@@ -31,7 +31,7 @@ class Greeter implements EventManagerAwareInterface {
 } 
 
 $greeter = new Greeter(); 
-$greeter->greet("Hello");  
+$greeter->asdf("Hello");  
 $greeter->getEventManager()->attach('greet', function($e) { 
    $event_name = $e->getName(); 
    $target_name = get_class($e->getTarget()); 
