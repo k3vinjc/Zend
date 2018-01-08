@@ -33,6 +33,7 @@ class Greeter implements EventManagerAwareInterface {
 $greeter = new Greeter(); 
 $greeter->asdf("Hello");  
 $greeter->getEventManager()->attach('asdf', function($e) { 
+	var_dump($e);
    $event_name = $e->getName(); 
    $target_name = get_class($e->getTarget()); 
    $params_json = json_encode($e->getParams()); 
