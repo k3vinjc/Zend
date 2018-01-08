@@ -18,9 +18,14 @@ class Greeter implements EventManagerAwareInterface {
       } 
       return $this->events; 
    } 
+
+   public function asdf($message){
+   		printf("ASDF -> \"%s\" from class\n", $message); 
+   }
+
    public function greet($message) { 
       printf("\"%s\" from class\n", $message); 
-      $this->getEventManager()->trigger(__FUNCTION__, $this, [$message ]); 
+      $this->getEventManager()->trigger('asdf', $this, [$message ]); 
    } 
 } 
 
