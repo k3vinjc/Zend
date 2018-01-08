@@ -20,20 +20,18 @@ class Greeter implements EventManagerAwareInterface {
    } 
 
    public function asdf($message){
-      printf("\"%s\" from class\n", $message); 
+      printf("ASDF -> \"%s\" from class\n", $message); 
       $this->getEventManager()->trigger(__FUNCTION__, $this, [$message ]); 
    }
 
    public function greet($message) { 
-      printf("\"%s\" from class\n", $message); 
-      $this->getEventManager()->trigger(__FUNCTION__, $this, [$message ]); 
+      printf("GREET -> \"%s\" from class\n", $message); 
+      $this->getEventManager()->trigger('asdf', $this, [$message ]); 
    } 
 } 
 
 $greeter = new Greeter(); 
-//$greeter->asdf("Hello");  
 $greeter->getEventManager()->attach('asdf', function($e) { 
-	var_dump($e);
    $event_name = $e->getName(); 
    $target_name = get_class($e->getTarget()); 
    $params_json = json_encode($e->getParams()); 
@@ -42,4 +40,4 @@ $greeter->getEventManager()->attach('asdf', function($e) {
       $target_name,  
       $params_json); 
 });  
-$greeter->asdf("Hello"); 
+$greeter->greet("Hello"); 
