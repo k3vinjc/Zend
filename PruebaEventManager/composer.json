@@ -1,0 +1,5 @@
+{
+    "require": {
+        "zendframework/zend-eventmanager": "^3.2"
+    }
+}
