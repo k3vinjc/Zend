@@ -13,6 +13,6 @@
 return [
     'Zend\Router',
     'Zend\Validator',
-    'Application',
-    'Tutorial'
+    'Tutorial',
+    'Application'
 ];
