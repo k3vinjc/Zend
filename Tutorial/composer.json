@@ -21,13 +21,14 @@
     "autoload": {
         "psr-4": {
             "Application\\": "module/Application/src/",
-            "Tutorial": "module/Tutorial/src/" 
+            "Tutorial\\": "module/Tutorial/src/" 
         }
     },
     "autoload-dev": {
         "psr-4": {
             "ApplicationTest\\": "module/Application/test/",
-            "Tutorial": "module/Tutorial/src/"
+            "Tutorial\\": "module/Tutorial/src/" ,
+            "Album\\": "module/Album/src/"
         }
     },
     "extra": [],
