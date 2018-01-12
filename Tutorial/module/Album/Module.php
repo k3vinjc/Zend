@@ -17,19 +17,19 @@ namespace Album;
 
  class Module implements AutoloaderProviderInterface, ConfigProviderInterface
  {
-     public function getAutoloaderConfig()
-     {
-         return array(
-             'Zend\Loader\ClassMapAutoloader' => array(
-                 __DIR__ . '/autoload_classmap.php',
-             ),
-             'Zend\Loader\StandardAutoloader' => array(
-                 'namespaces' => array(
-                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                 ),
-             ),
-         );
-     }
+//     public function getAutoloaderConfig()
+//     {
+//         return array(
+//             'Zend\Loader\ClassMapAutoloader' => array(
+//                 __DIR__ . '/autoload_classmap.php',
+//             ),
+//             'Zend\Loader\StandardAutoloader' => array(
+//                 'namespaces' => array(
+//                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
+//                 ),
+//             ),
+//         );
+//     }
 
      public function getConfig()
      {
@@ -37,22 +37,21 @@ namespace Album;
      }
      
       // Add this method:
-     public function getServiceConfig()
-     {
-         return array(
-             'factories' => array(
-                 'Album\Model\AlbumTable' =>  function($sm) {
-                     $tableGateway = $sm->get('AlbumTableGateway');
-                     $table = new AlbumTable($tableGateway);
-                     return $table;
-                 },
-                 'AlbumTableGateway' => function ($sm) {
-                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                     $resultSetPrototype = new ResultSet();
-                     $resultSetPrototype->setArrayObjectPrototype(new Album());
-                     return new TableGateway('album', $dbAdapter, null, $resultSetPrototype);
-                 },
-             ),
-         );
-     }
+public function getServiceConfig()
+    {
+        return [
+            'factories' => [
+                Model\AlbumTable::class => function($container) {
+                    $tableGateway = $container->get(Model\AlbumTableGateway::class);
+                    return new Model\AlbumTable($tableGateway);
+                },
+                Model\AlbumTableGateway::class => function ($container) {
+                    $dbAdapter = $container->get(AdapterInterface::class);
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Model\Album());
+                    return new TableGateway('album', $dbAdapter, null, $resultSetPrototype);
+                },
+            ],
+        ];
+    }
  }
