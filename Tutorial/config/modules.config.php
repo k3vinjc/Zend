@@ -18,7 +18,7 @@ return [
     'Zend\Hydrator',
     'Zend\Router',
     'Zend\Validator',
+    'Album',
     'Tutorial',
-    'Application',
-    'Album'
+    'Application'
 ];
