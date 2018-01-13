@@ -5,8 +5,6 @@ $this->headTitle($title);
 <h1><?= $this->escapeHtml($title) ?></h1>
 <?php
 // This provides a default CSS class and placeholder text for the title element:
-$this->setTranslatorEnabled(true);
-
 $album = $form->get('title');
 $album->setAttribute('class', 'form-control');
 $album->setAttribute('placeholder', 'Album title');
