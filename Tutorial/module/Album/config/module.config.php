@@ -12,11 +12,6 @@ return array(
       'Album\Controller\Album' => 'Album\Controller\AlbumController',
       ),
       ), */
-    'controllers' => [
-        'factories' => [
-            Controller\AlbumController::class => InvokableFactory::class,
-        ],
-    ],
     'router' => [
         'routes' => [
             'album' => [

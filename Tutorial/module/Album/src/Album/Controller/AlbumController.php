@@ -1,43 +1,31 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
- namespace Album\Controller;
 
- use Zend\Mvc\Controller\AbstractActionController;
- use Zend\View\Model\ViewModel;
+namespace Album\Controller;
 
- class AlbumController extends AbstractActionController
- {
-      protected $albumTable;
-     public function indexAction()
-     {
-          return new ViewModel(array(
-             'albums' => $this->getAlbumTable()->fetchAll(),
-         ));
-     }
+use Album\Model\AlbumTable;
+use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\ViewModel;
 
-     public function addAction()
-     {
-     }
+class AlbumController extends AbstractActionController {
 
-     public function editAction()
-     {
-     }
+    private $table;
 
-     public function deleteAction()
-     {
-     }
-     
-      public function getAlbumTable()
-     {
-         if (!$this->albumTable) {
-             $sm = $this->getServiceLocator();
-             $this->albumTable = $sm->get('Album\Model\AlbumTable');
-         }
-         return $this->albumTable;
-     }
- }
+    // Add this constructor:
+    public function __construct(AlbumTable $table) {
+        $this->table = $table;
+    }
+
+    public function indexAction()
+    {
+        return new ViewModel([
+            'albums' => $this->table->fetchAll(),
+        ]);
+    }
+
+}
