@@ -31,7 +31,7 @@ class Module implements ConfigProviderInterface
         ];
     }
     
-    /*public function getControllerConfig()
+    public function getControllerConfig()
     {
         return [
             'factories' => [
@@ -42,5 +42,5 @@ class Module implements ConfigProviderInterface
                 },
             ],
         ];
-    }*/
+    }
 }

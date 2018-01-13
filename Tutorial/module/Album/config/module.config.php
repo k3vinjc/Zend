@@ -2,14 +2,14 @@
 namespace Album;
 
 use Zend\Router\Http\Segment;
-use Zend\ServiceManager\Factory\InvokableFactory; //Añadido en Module.php
+//use Zend\ServiceManager\Factory\InvokableFactory; //Añadido en Module.php
 
 return [
-    'controllers' => [
+    /*'controllers' => [
         'factories' => [
             Controller\AlbumController::class => InvokableFactory::class,
         ],
-    ], //AÑADIDO EN Module.php
+    ],*/ //AÑADIDO EN Module.php
 
     // The following section is new and should be added to your file:
     'router' => [
