@@ -1,19 +1,15 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace Album\Controller;
 
+// Add the following import:
 use Album\Model\AlbumTable;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class AlbumController extends AbstractActionController {
 
+    // Add this property:
     private $table;
 
     // Add this constructor:
@@ -26,6 +22,18 @@ class AlbumController extends AbstractActionController {
         return new ViewModel([
             'albums' => $this->table->fetchAll(),
         ]);
+    }
+
+    public function addAction() {
+        
+    }
+
+    public function editAction() {
+        
+    }
+
+    public function deleteAction() {
+        
     }
 
 }

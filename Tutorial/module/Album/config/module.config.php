@@ -1,17 +1,17 @@
 <?php
+namespace Album;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+use Zend\Router\Http\Segment;
+//use Zend\ServiceManager\Factory\InvokableFactory; Añadido en Module.php
 
-return array(
-    /* 'controllers' => array(
-      'invokables' => array(
-      'Album\Controller\Album' => 'Album\Controller\AlbumController',
-      ),
-      ), */
+return [
+    /*'controllers' => [
+        'factories' => [
+            Controller\AlbumController::class => InvokableFactory::class,
+        ],
+    ],*/ //AÑADIDO EN Module.php
+
+    // The following section is new and should be added to your file:
     'router' => [
         'routes' => [
             'album' => [
@@ -30,9 +30,10 @@ return array(
             ],
         ],
     ],
-    'view_manager' => array(
-        'template_path_stack' => array(
+
+    'view_manager' => [
+        'template_path_stack' => [
             'album' => __DIR__ . '/../view',
-        ),
-    ),
-);
+        ],
+    ],
+];

@@ -17,7 +17,8 @@ class AlbumTable
     {
         return $this->tableGateway->select();
     }
-public function getAlbum($id)
+
+    public function getAlbum($id)
     {
         $id = (int) $id;
         $rowset = $this->tableGateway->select(['id' => $id]);
